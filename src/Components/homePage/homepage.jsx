@@ -8,7 +8,7 @@ const Homepage = () => {
             <NavBar/>
 
               <div className='bg-white w-1/2 h-96 mx-auto'>
-                   jkrhdsgklh
+                   jkrhdsgklh dgb,jfdhgjkd
               </div>
         </div>
     );
