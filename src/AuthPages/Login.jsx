@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import GoogleIcon from "../img/googleIcon.png";
 import FacbookIcon from "../img/facbookIcon.png";
 import NavBar from "../Components/NavBar";
-import BgImg from "../img/nature_bg-1.jpg";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -33,14 +32,14 @@ const Login = () => {
   };
 
   return (
-    <div className="object-cover w-screen h-screen">
+    <div className=" object-cover w-screen h-screen">
       <NavBar />
-
       <div className="flex flex-col justify-center items-center pt-12 px-4 md:px-0 ">
         {/* Login Page Content */}
-        <div className="flex flex-col md:flex-row bg-white shadow-md rounded-[25px] overflow-hidden w-full max-w-3xl">
+       
+        <div className="flex flex-col md:flex-row bg-white shadow-md rounded-[25px] overflow-hidden w-full max-w-3xl  bg-opacity-0 backdrop-blur-lg">
           {/* Login field Right Form Box Body */}
-          <div className="w-full md:max-w-80 p-8 relative bg-white">
+          <div className="w-full md:max-w-80 p-8 relative bg-white bg-opacity-97 ">
             <div className="circlesmall1 bg-brand-bodyColor w-5 h-5 absolute top-12 left-8 rounded-full "></div>
             <div className="circlesmall1 bg-brand-bodyColor w-5 h-5 absolute bottom-8 right-8 rounded-full "></div>
             <h1 className="text-center font-bold text-3xl">LOGIN</h1>
@@ -93,7 +92,7 @@ const Login = () => {
             </div>
             <div className="w-full h-[30px] relative mt-4 flex justify-center items-center">
               <div className="relative w-full h-[3px] bg-black"></div>
-              <div className="absolute z-10 bg-white text-emerald-950 font-mono w-52 h-[100%] text-center rounded-[35px] border-black border-[3px]">
+              <div className="absolute font-bold z-10 bg-gray-100 text-emerald-950 font-mono w-52 h-[100%] text-center rounded-[35px] border-black border-[3px]">
                 Sign In with Other's
               </div>
             </div>
@@ -126,7 +125,7 @@ const Login = () => {
               </h1>
               <button
                 onClick={handleRegisterRedirect}
-                className="transition duration-500 ease-in-out h text-[1rem] mt-4 bg-white hover:bg-brand-dark hover:shadow-custom-hover hover:text-white text-brand-dark rounded-2xl px-5 py-1 font-MyFont1 font-extrabold font-sans"
+                className="transition hover:bg-gradient-to-l from-green-400 relative right-0 transition-width duration-300 ease-in-out h text-[1rem] mt-4 bg-white hover:shadow-custom-hover hover:text-black text-brand-dark rounded-2xl px-5 py-1 font-MyFont1 font-extrabold font-sans"
                 type="submit"
               >
                 Get Started
@@ -159,6 +158,7 @@ const Login = () => {
           &copy; Copyright to Vision Technology. All Right Resolved 2024 !
         </p>
       </div>
+
     </div>
   );
 };

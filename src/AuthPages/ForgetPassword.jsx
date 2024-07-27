@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { User } from 'lucide-react';
+import NavBar from '../Components/NavBar';
 
 const ForgetPassword = () => {
   const [emailOrPhone, setEmailOrPhone] = useState('');
@@ -41,7 +42,7 @@ const ForgetPassword = () => {
   }, []);
   return (
     <div >
-
+      <NavBar/>
     <div className="flex flex-col items-center min-h-screen px-4">
       <div className=" relative bg-white p-6 rounded-lg mt-16 shadow-md w-full max-w-md">
 

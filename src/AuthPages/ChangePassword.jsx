@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { Eye, EyeOff, Lock ,User} from 'lucide-react';
+import NavBar from '../Components/NavBar';
 
 const ChangePassword = () => {
   const [password, setPassword] = useState('');
@@ -47,9 +48,11 @@ const ChangePassword = () => {
     document.title = "Vision - Change password";
   }, []);
   return (
-    <div className="flex flex-col items-center min-h-screen px-4">
-       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mt-12">
-       <User className='w-12 h-12 -top-6 mt-12 bg-blue-300 rounded-full p-2 absolute text-gray-950'/>
+    <div>
+      <NavBar/>
+      <div className="flex flex-col items-center min-h-screen px-4">
+       <div className="bg-white p-6 rounded-lg relative shadow-md w-full max-w-md mt-12">
+       <User className='w-12 h-12  bg-blue-300 rounded-full p-2 absolute -translate-y-12 text-gray-950'/>
         <h2 className="text-2xl font-semibold mb-4">Change Password</h2>
         <div className="relative mb-4">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -106,6 +109,8 @@ const ChangePassword = () => {
         </button>
       </div>
     </div>
+    </div>
+   
   );
 };
 

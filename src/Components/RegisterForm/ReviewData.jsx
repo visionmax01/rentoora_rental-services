@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const ReviewInformation = ({ formData }) => {
+  
   return (
     <motion.div
       initial={{ opacity: 0, x: 50 }}

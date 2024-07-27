@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         Rampart: ["Rampart One", "cursive"],
+        LogoText: ["Playwrite BE VLG", "cursive"],
       },
       colors: {
         brand: {
@@ -28,13 +29,17 @@ export default {
         },
       },
       boxShadow: {
-        'custom-hover': '0 0 25px 5px white',
+        'custom-hover': '0 4px 10px 0 rgba(0, 0, 0, 0.25), 0 4px 20px 0 rgba(0, 0, 0, 0.15)',
+      },
+      backgroundImage: {
+        'gradient-hover': 'linear-gradient(45deg, rgba(255, 0, 150, 0.3) 0%, rgba(0, 204, 255, 0.3) 50%, rgba(51, 102, 255, 0.3) 100%)',
       },
     },
   },
   variants: {
     extend: {
       boxShadow: ['hover'],
+      backgroundImage: ['hover'],
     },
   },
   plugins: [],

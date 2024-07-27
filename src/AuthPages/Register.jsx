@@ -69,8 +69,8 @@ const Register = () => {
   return (
       <div>
         <NavBar />
-    <div className="w-[95%] md:w-[85%] mx-auto mt-10 bg-white rounded-lg shadow-lg flex overflow-hidden">
-      <div className="w-[100%]  md:w-[70%] ">
+    <div className="w-[95%] md:w-[85%] mx-auto mt-10 rounded-lg shadow-lg flex overflow-hidden">
+      <div className="w-[100%]  md:w-[70%]  bg-white">
         <div className="relative flex items-center pb-8 pt-4 rounded-tl-lg bg-gray-600 px-8">
           {[
             "Personal Info",

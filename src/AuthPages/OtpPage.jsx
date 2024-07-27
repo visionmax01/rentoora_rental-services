@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { User, PenTool } from 'lucide-react';
+import NavBar from '../Components/NavBar';
 
 const OtpPage = () => {
   const navigate = useNavigate();
@@ -70,9 +71,11 @@ const OtpPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen  px-4">
+   <div>
+    <NavBar/>
+     <div className="flex flex-col items-center min-h-screen  px-4">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mt-12">
-        <User className='w-12 h-12 -top-6 mt-12 bg-blue-300 rounded-full p-2 absolute text-gray-950'/>
+        <User className='w-12 h-12 -translate-y-12 bg-blue-300 rounded-full p-2 absolute text-gray-950'/>
         <h2 className="text-2xl font-semibold mb-4 mt-2">Enter OTP</h2>
         <div className="flex items-center border-lg mb-4 bg-gray-200 rounded-l-full ">
           <p className="text-white px-3 mr-2 bg-black py-1 rounded-full">OTP Sent To:</p>
@@ -114,6 +117,7 @@ const OtpPage = () => {
         </button>
       </div>
     </div>
+   </div>
   );
 };
 
