@@ -309,6 +309,7 @@ const Homepage = () => {
 
       <div className="relative   text-white h-96 ">written  by shav raj</div>
       <div className="  text-black h-96 ">dfhhgjfdh</div>
+      <div className="  text-black h-96 ">im secont git</div>
 
       {/* footer section  */}
       <Footer />
