@@ -272,31 +272,31 @@ const Homepage = () => {
                 </div>
               </div>
             </div>
-            <div className="text-black uppercase  md:text-lg text-sm absolute z-10 p-4 top-28 h-auto w-full bg-white  flex gap-4 justify-between   items-center flex-wrap md:justify-center md:gap-16">
+            <div className="text-black  uppercase  md:text-lg font-bold  text-[12px] absolute z-10 p-4 top-28 h-auto w-full bg-white  flex gap-4 justify-between   items-center flex-wrap md:justify-center md:gap-16">
               <div className="flex flex-col   justify-center items-center w-28 h-28 md:w-40 md-h-40 bg-cyan-400 bg-opacity-75 cursor-pointer hover:-translate-y-1 duration-200 ease-in-out rounded-lg shadow-gray-300 shadow-md">
                 {" "}
                 <User className="w-12 h-12  mb-2"/>
-                hffhf
+                 Room Rent
               </div>
               <div className="flex flex-col  md:text-lg justify-center items-center w-28 h-28 md:w-40 md-h-40 bg-cyan-400 bg-opacity-75 cursor-pointer hover:-translate-y-1 duration-200 ease-in-out rounded-lg shadow-gray-300 shadow-md  ">
                 <User className="w-12 h-12  mb-2"/>
-                 Rent Property
+                 House Rent
               </div>
               <div className="flex flex-col  md:text-lg justify-center items-center w-28 h-28 md:w-40 md-h-40 bg-brand-Colorpurple bg-opacity-75 cursor-pointer hover:-translate-y-1 duration-200 ease-in-out rounded-lg shadow-gray-300 shadow-md  ">
                 <User className="w-12 h-12 mb-2 "/>
-                 RENT PROPERTY
+                 Apartment
               </div>
               <div className="flex flex-col  md:text-lg justify-center items-center w-28 h-28 md:w-40 md-h-40 bg-brand-Colorpurple bg-opacity-75 cursor-pointer hover:-translate-y-1 duration-200 ease-in-out rounded-lg shadow-gray-300 shadow-md  ">
                 <User className="w-12 h-12  mb-2"/>
-                 RENT PROPERTY
+                 For SHope
               </div>
               <div className="flex flex-col  md:text-lg justify-center items-center w-28 h-28 md:w-40 md-h-40 bg-cyan-400 bg-opacity-75 cursor-pointer hover:-translate-y-1 duration-200 ease-in-out rounded-lg shadow-gray-300 shadow-md  ">
                 <User className="w-12 h-12  mb-2 "/>
-                 RENT PROPERTY
+                  Blumber
               </div>
               <div className="flex flex-col  md:text-lg justify-center items-center w-28 h-28 md:w-40 md-h-40 bg-cyan-400 bg-opacity-75 cursor-pointer hover:-translate-y-1 duration-200 ease-in-out rounded-lg shadow-gray-300 shadow-md  ">
                 <User className="w-12 h-12  mb-2"/>
-                 RENT PROPERTY
+                 Electrician
               </div>
             </div>
           </div>
