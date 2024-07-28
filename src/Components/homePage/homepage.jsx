@@ -307,7 +307,7 @@ const Homepage = () => {
 
       {/* section Two  Started From  here  */}
 
-      <div className="relative    text-black h-96 ">dfhhgjfdh</div>
+      <div className="relative   text-white h-96 ">written  by shav raj</div>
       <div className="  text-black h-96 ">dfhhgjfdh</div>
 
       {/* footer section  */}
