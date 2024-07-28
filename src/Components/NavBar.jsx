@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-
+import Mainlogo from '../img/Main_logo.png';
 const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const navigate = useNavigate();
@@ -18,15 +18,16 @@ const NavBar = () => {
     navigate("/");
   };
   return (
-    <div>
+    <div className="sticky top-0 z-50">
       <nav className="w-full h-16 md:h-12  bg-gradient-to-r  to-brand-navbg from-blue-900  flex items-center">
         <div className="flex justify-between items-center w-full px-4 md:px-12">
-          <div
+          <img
             onClick={HomePageRedirection}
-            className=" cursor-pointer font-extrabold text-yellow-400  text-2xl flex text-center"
+            className=" cursor-pointer font-extrabold text-yellow-400  flex h-12"
+            src= {Mainlogo}
           >
-            RENT<span className="text-lg font-LogoText">OOr</span>A
-          </div>
+            
+          </img>
 
           <ul className="hidden md:flex gap-7 items-center text-white font-semibold">
             <li className="cursor-pointer hover:bg-gradient-to-l from-green-400 to-gray-600  text-white font-semibold rounded-lg px-2 py-0.5 transform relative  w-full right-0 transition-width duration-300 ease-in-out">

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { User } from 'lucide-react';
+import { User, Mail } from 'lucide-react';
 import NavBar from '../Components/NavBar';
 
 const ForgetPassword = () => {
@@ -51,7 +51,7 @@ const ForgetPassword = () => {
 
         <h2 className="text-2xl font-semibold mb-6 mt-4">Forget Password</h2>
         <div className="relative">
-          <User className="absolute top-5 left-3 transform -translate-y-1/2 text-gray-500" />
+          <Mail className="absolute top-5 left-2 transform -translate-y-1/2 text-gray-500" />
           <input
             type="text"
             value={emailOrPhone}
