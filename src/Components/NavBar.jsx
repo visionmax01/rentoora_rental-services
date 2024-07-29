@@ -7,6 +7,7 @@ const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const navigate = useNavigate();
 
+
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
@@ -17,6 +18,9 @@ const NavBar = () => {
   const HomePageRedirection = () => {
     navigate("/");
   };
+  const handleDeveloperURL = () =>{
+    navigate("/developer");
+  }
   return (
     <div className="sticky top-0 z-50">
       <nav className="w-full h-16 md:h-12  bg-gradient-to-r  to-brand-navbg from-blue-900  flex items-center">
@@ -36,7 +40,7 @@ const NavBar = () => {
             <li className="cursor-pointer hover:bg-gradient-to-l from-green-400 to-gray-600  text-white font-semibold rounded-lg px-2 py-0.5 transform relative  w-full right-0 transition-width duration-300 ease-in-out">
               About
             </li>
-            <li className="cursor-pointer hover:bg-gradient-to-l from-green-400 to-gray-600  text-white font-semibold rounded-lg px-2 py-0.5 transform relative  w-full right-0 transition-width duration-300 ease-in-out">
+            <li onClick={handleDeveloperURL} className="cursor-pointer hover:bg-gradient-to-l from-green-400 to-gray-600  text-white font-semibold rounded-lg px-2 py-0.5 transform relative  w-full right-0 transition-width duration-300 ease-in-out">
               Developer
             </li>
             <li
@@ -90,7 +94,7 @@ const NavBar = () => {
           <li className="px-4 hover:bg-gradient-to-l from-green-500 py-1 rounded-md to-slate-50 hover:text-black">
             About
           </li>
-          <li className="px-4 hover:bg-gradient-to-l from-green-500 py-1 rounded-md to-slate-50 hover:text-black">
+          <li onClick={handleDeveloperURL} className="px-4 hover:bg-gradient-to-l from-green-500 py-1 rounded-md to-slate-50 hover:text-black">
             Developer
           </li>
           <li

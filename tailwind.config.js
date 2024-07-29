@@ -11,6 +11,15 @@ export default {
         LogoText: ["Playwrite BE VLG", "cursive"],
         Roboto: ["Oswald"],
       },
+      keyframes: {
+        'fill-bottom-right': {
+          '0%': { transform: 'scale(0) translateY(0)', transformOrigin: 'bottom right', opacity: 1 },
+          '100%': { transform: 'scale(1) translateY(0)', transformOrigin: 'bottom right', opacity: 1 },
+        },
+      },
+      animation: {
+        'fill-bottom-right': 'fill-bottom-right 0.4s ease-in-out forwards',
+      },
       textShadow: {
         'sm': '1px 1px 2px rgba(0, 0, 0, 0.5)',
         'md': '2px 2px 4px rgba(0, 0, 0, 0.5)',
@@ -30,6 +39,7 @@ export default {
           Colorpurple: '#774FB8',
           bodyColor: '#C9CBEA',
           navbg: '#4B4444',
+          bgColor:'#180f27',
         },
         secondary: {
           light: '#FFBB3A',

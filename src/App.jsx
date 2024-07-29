@@ -7,6 +7,7 @@ import Homepage from "./Components/homePage/homepage";
 import ForgetPassword from "./AuthPages/ForgetPassword";
 import OtpPage from "./AuthPages/OtpPage";
 import ChangePassword from "./AuthPages/ChangePassword";
+import Developer from "./Components/homePage/develober";
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/otp" element={<OtpPage />} />
         <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/developer" element={<Developer />} />
 
       </Routes>
     </Router>
