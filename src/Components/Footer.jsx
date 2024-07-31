@@ -48,7 +48,7 @@ const Footer = () => {
           </div>
 
           {/* Payment Partners */}
-          <div>
+          <div >
             <h3 className="text-lg font-semibold mb-4">Payment Partners</h3>
             <ul className="space-y-2">
               <li className="flex items-center"><CreditCard className="mr-2 h-5 w-5" /> Visa Card</li>
@@ -59,8 +59,8 @@ const Footer = () => {
         </div>
         
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-gray-700 text-center">
-          <p>&copy; {new Date().getFullYear()} Copyright to Vision Technology. All Right Resolved 2024 ! </p>
+        <div className="md:mt-8 mt-6  pt-4  border-t border-gray-700 text-center">
+          <p className=" text-sm md:text-xl">&copy; {new Date().getFullYear()} Copyright to Vision Technology. All Right Resolved ! </p>
         </div>
       </div>
     </footer>

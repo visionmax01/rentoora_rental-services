@@ -154,8 +154,10 @@ const Login = () => {
             <div className="smallCircle absolute top-16 left-8 bg-brand-lightGrow w-8 h-8 rounded-full z-1 "></div>
           </div>
         </div>
-        <p className="text-black text-xs md:mt-0 mt-2 md:text-base">
-          &copy; Copyright to Vision Technology. All Right Resolved 2024 !
+         {/* Copyright */}
+        <p className="text-white text-xs md:mt-0 mt-2 md:text-base">
+          <p>&copy; {new Date().getFullYear()} Copyright to Vision Technology. All Right Resolved ! </p>
+
         </p>
       </div>
 

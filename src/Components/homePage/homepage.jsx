@@ -210,7 +210,6 @@ const Homepage = () => {
       <NavBar />
 
       {/* section One of HOME page start  */}
-
       <div className="mt-10 md:mt-20">
         <div className="h-96  bg-white opacity-5 absolute top-0  w-full -z-10"></div>
         {/* containt section first  */}
@@ -225,23 +224,6 @@ const Homepage = () => {
             </span>{" "}
             or any rental property for you!
           </h2>
-          <div className="md:block hidden  flex-col absolute -top-1/2 right-0  pr-8 rounded-l-md bg-white py-4 px-2">
-            <img
-              className="w-8 h-8 opacity-100 cursor-pointer mb-5 "
-              src={FacbookIcon}
-              alt=""
-            />
-            <img
-              className="w-8 h-8 opacity-100 cursor-pointer mb-5 "
-              src={FacbookIcon}
-              alt=""
-            />
-            <img
-              className="w-8 h-8 opacity-100 cursor-pointer  "
-              src={FacbookIcon}
-              alt=""
-            />
-          </div>
         </div>
         {/* search implementation here  */}
         <div className=" mx-auto  flex flex-col items-center justify-center">
@@ -496,9 +478,7 @@ const Homepage = () => {
           </div>
         </div>
       </section>
-
       {/* section three ended here   */}
-
       {/* customer review feadback displayed  section */}
       <section className=" text-white">
       <div className="container mx-auto ">

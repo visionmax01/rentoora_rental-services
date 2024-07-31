@@ -26,7 +26,6 @@ export default {
         'lg': '3px 3px 6px rgba(0, 0, 0, 0.5)',
         'xl': '4px 4px 8px rgba(0, 0, 0, 0.5)',
         '2xl': '5px 5px 10px rgba(0, 0, 0, 0.5)',
-        // Add more custom shadows as needed
       },
       colors: {
         brand: {

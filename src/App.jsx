@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./AuthPages/Login";
 import './App.css';
 import Register from "./AuthPages/Register";
@@ -14,6 +14,7 @@ import Developer from "./Components/homePage/develober";
 
 
 function App() {
+
   return (
     <Router>
       <Routes>

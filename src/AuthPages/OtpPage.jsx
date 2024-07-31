@@ -10,7 +10,7 @@ const OtpPage = () => {
   const [error, setError] = useState(null);
   const [emailOrPhone, setEmailOrPhone] = useState(location.state?.emailOrPhone || '');
   const inputRef = useRef(null);
-  const [timeLeft, setTimeLeft] = useState(10);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
@@ -62,11 +62,9 @@ const OtpPage = () => {
   };
 
   const handleResendOtp = () => {
-    // Reset timer and expired state
-    setTimeLeft(120);
+    setTimeLeft(60);
     setIsExpired(false);
     setError(null);
-    // Here you would typically call an API to resend the OTP
     console.log('Resending OTP to', emailOrPhone);
   };
 
@@ -97,7 +95,7 @@ const OtpPage = () => {
         {isExpired ? (
           <p className="text-sm text-red-600 mb-2">OTP has expired.</p>
         ) : (
-          <p className="text-sm text-gray-600 mb-2">Time remaining: {formatTime(timeLeft)}</p>
+          <p className="text-sm text-gray-600 mb-2">Time remaining: <span className="text-red-500 font-extrabold ">{formatTime(timeLeft)}</span></p>
         )}
         {isExpired && (
           <button

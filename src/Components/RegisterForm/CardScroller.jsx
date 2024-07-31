@@ -54,7 +54,7 @@ const CardScroller = () => {
         {cards.map((card) => (
           <div
             key={card.id}
-            className="flex-shrink-0  w-40   h-64  md:w-60 md:h-70 bg-white bg-opacity-40 rounded-lg shadow-md p-4 flex flex-col items-center"
+            className="flex-shrink-0  w-40   h-64  md:w-60 md:h-70 bg-white  rounded-lg shadow-md p-4 flex flex-col items-center"
           >
             <img src={card.image} className="w-32 h-24  object-cover object-top rounded-3xl" alt="User Image" srcset="" />
             <h3 className="md:text-lg py-2 font-bold text-lg ">{card.title}</h3>
