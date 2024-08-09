@@ -4,9 +4,9 @@ import DeveloperImg1 from '../../img/my_profile_pic.jpg'
 import DeveloperImg2 from '../../img/my-pic.jpg'
 const Developer = () => {
   return (
-    <div className="text-xl text-center text-white  mb-12">
+    <div className="  mb-12">
       <NavBar />
-      <h1 className="text-4xl font-Roboto font-extrabold tracking-wider opacity-80 mt-8 "> 
+      <h1 className="text-4xl font-Roboto font-extrabold tracking-wider opacity-80 mt-8 text-center text-white "> 
         Developer
       </h1>
       <div className="  text-black w-[85%] h-auto mx-auto mt-8 rounded-xl flex flex-col md:flex md:flex-row gap-4">
