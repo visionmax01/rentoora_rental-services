@@ -270,7 +270,7 @@ const Homepage = () => {
             </div>
             <div className="text-black   uppercase rounded-t-3xl md:rounded-none  md:text-lg font-bold  text-[12px] absolute z-10 p-4 top-28 h-auto md:min-h-80 min-h-96  w-full   flex gap-2 justify-around   items-center flex-wrap md:justify-center md:gap-16 bg-gradient-to-r from-gray-700 to-blue-950 bluer-500 ">
               <h1 className="text-center absolute top-2  md:top-4  text-white text-xl md:text-4xl opacity-70">
-                Services We Provide
+                Services We Provide   
               </h1>
 
               <div
