@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "../NavBar";
 import DeveloperImg1 from '../../img/my_profile_pic.jpg'
-import DeveloperImg2 from '../../img/my-pic.jpg'
+import DeveloperImg2 from '../../img/shiv.jpg'
 const Developer = () => {
   return (
     <div className="  mb-12">
@@ -28,7 +28,7 @@ const Developer = () => {
             className="m-auto w-32 h-32  md:w-44 md:h-44 bg-gray-200 rounded-full mb-4"
             alt=""
           />
-          <h1>By. BHISHAN SAH</h1>
+          <h1>By. SHIV RAJ RAUT</h1>
           <p className="mt-4">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint rounded-lg
             temporibus suscipit dicta, voluptatum placeat vel.
