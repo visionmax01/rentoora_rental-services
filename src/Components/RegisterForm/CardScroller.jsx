@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import MyPic from '../../img/my_profile_pic.jpg'
-import MyPic2 from '../../img/my-pic.jpg'
+import MyPic2 from '../../img/shiv.jpg'
 
 const CardScroller = () => {
   const scrollRef = useRef(null);
@@ -30,11 +30,11 @@ const CardScroller = () => {
   // Sample card data
   const cards = [
     { id: 1, image:MyPic, title: 'Bhishan', content: 'Hellow my name is Bhishan sah And iam from Nepal ' },
-    { id: 2, image:MyPic2, title: 'Bhishan 2', content: 'Content for Card 2' },
+    { id: 2, image:MyPic2, title: 'SHIV RAJ RAUT', content: 'Content for Card 2' },
     { id: 3, image:MyPic, title: 'Bhishan 3', content: 'Content for Card 3' },
-    { id: 4, image:MyPic2, title: 'Bhishan 4', content: 'Content for Card 4' },
+    { id: 4, image:MyPic2, title: 'SHIV RAJ RAUT', content: 'Content for Card 4' },
     { id: 5, image:MyPic, title: 'Bhishan 5', content: 'Content for Card 5' },
-    { id: 6, image:MyPic2, title: 'Bhishan 6', content: 'Content for Card 6' },
+    { id: 6, image:MyPic2, title: 'SHIV RAJ RAUT', content: 'Content for Card 6' },
     { id: 7, image:MyPic, title: 'Bhishan 7', content: 'Content for Card 7' },
   ];
 
@@ -56,7 +56,7 @@ const CardScroller = () => {
             key={card.id}
             className="flex-shrink-0  w-40   h-64  md:w-60 md:h-70 bg-white  rounded-lg shadow-md p-4 flex flex-col items-center"
           >
-            <img src={card.image} className="w-32 h-24  object-cover object-top rounded-3xl" alt="User Image" srcset="" />
+            <img src={card.image} className="w-32 h-24 bg-blue-400  object-cover object-top rounded-3xl" alt="User Image" srcset="" />
             <h3 className="md:text-lg py-2 font-bold text-lg ">{card.title}</h3>
             <p className='text-center text-[15px]'>{card.content}</p>
           </div>
