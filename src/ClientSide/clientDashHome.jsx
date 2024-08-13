@@ -1,4 +1,4 @@
-import { Menu, X, User, HelpCircle, FileText, LayoutDashboard, ChevronDown, LogOut, KeySquare   } from 'lucide-react';
+import { Menu, X, User, HelpCircle, FileText, LayoutDashboard, ChevronDown, LogOut, KeySquare, Upload   } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 import ClientHomePage from './clientHomePage';
 import ClientProfile from './clientProfile';
@@ -6,6 +6,7 @@ import AllPost from './allPost';
 import CompanyLogo from '../assets/img/Main_logo.png';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ProfilePic from '../assets/img/profile_pic.jpg'
+import ClientPost from './ClintPost';
 const ClientDashHome = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeComponent, setActiveComponent] = useState('Dashboard');
@@ -41,6 +42,8 @@ const ClientDashHome = () => {
                 return <ClientProfile />;
             case 'View all Post':
                 return <AllPost />;
+            case 'Post Data':
+                return <ClientPost />;
             default:
                 return <ClientHomePage />;
         }
@@ -50,10 +53,10 @@ const ClientDashHome = () => {
         <div className="flex">
             {/* Toggle Button */}
             <button 
-                className="absolute top-2 left-2 rounded  bg-white p-3 text-red-800 z-50"
+                className=" fixed top-2 left-2 rounded  hover:bg-gray-200 bg-white p-3 text-red-800 z-50"
                 onClick={toggleMenu}
             >
-                {isOpen ? <X /> : <Menu />}
+                {isOpen ? <Menu /> : <Menu />}
             </button>
 
             {/* Navigation Bar */}
@@ -140,16 +143,38 @@ const ClientDashHome = () => {
                             </div>
                         )}
                     </li>
+
+
+                    <li className="relative group">
+                        <a 
+                            href="#"
+                            className={`flex hover:bg-brand-bgColor hover:text-white  items-center gap-2 w-full px-4 rounded-l-full py-2 ${activeComponent === 'Post Data' ? 'bg-brand-bgColor text-white' : ''}`}
+                            onClick={() => setActiveComponent('Post Data')}
+                        >
+                            <Upload />
+                            {isOpen && <span>Post</span>}
+                        </a>
+
+                        {/* hover Popup  */}
+                        {!isOpen && (
+                            <div className="absolute flex items-center justify-center left-14 top-5 transform -translate-y-1/2 opacity-0 hover:hidden group-hover:opacity-100 group-hover:left transition-all duration-300">
+                                <div className="w-6 h-6 bg-white rotate-45"></div>
+                                <div className="relative -ml-5 bg-white text-red-800 font-bold  p-2 rounded">
+                                    Post
+                                </div>
+                            </div>
+                        )}
+                    </li>
                 </ul>
             </nav>
 
             {/* Main Content Area */}
             <aside
-                className={`ml-auto transition-all duration-500 text-white ${isOpen ? 'w-[calc(100%-16rem)]' : 'w-full'}`}
+                className={` ml-auto transition-all duration-500 text-white ${isOpen ? 'w-[calc(100%-16rem)]' : 'w-full'}`}
                 style={{ marginLeft: isOpen ? '16rem' : '4rem' }}
             >
                 <div className="w-full h-auto flex justify-end relative">
-                    <div className="bg-gradient-to-l from-brand-Colorpurple to-brand-dark w-full h-12 px-4 py-8 flex items-center justify-between">
+                    <div className="bg-gradient-to-l sticky top-0 from-brand-Colorpurple to-brand-dark w-full h-12 px-4 py-8 flex items-center justify-between">
 
                         {/* Company Logo Branding Mark */}
                         <img src={CompanyLogo} className="h-10" alt="Company-logo" />
@@ -175,7 +200,7 @@ const ClientDashHome = () => {
                         </div>
                     </div>
                 </div>
-                <div className="p-8">
+                <div>
                     {renderComponent()}
                 </div>
             </aside>

@@ -9,6 +9,7 @@ import OtpPage from "./AuthPages/OtpPage";
 import ChangePassword from "./AuthPages/ChangePassword";
 import Developer from "./Components/homePage/develober";
 import ClientDashHome from "./ClientSide/clientDashHome";
+import ClientPost from "./ClientSide/ClintPost";
 
 
 
@@ -33,6 +34,7 @@ function App() {
 
         {/* client side  saperated routes */}
         <Route path="/client-dashboard" element={<ClientDashHome/>}  />
+        <Route path="/client-post" element={<ClientPost/>}  />
 
       </Routes>
     </Router>
