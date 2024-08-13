@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import userIcon from "../img/userIconLogPage.png";
-import passIcon from "../img/password_Icon.png";
-import passShow from "../img/show_pass.png";
-import passHide from "../img/hide-pass.png";
-import leftImage from "../img/loginpageimage.png";
+import userIcon from "../assets/img/userIconLogPage.png";
+import passIcon from "../assets/img/password_Icon.png";
+import passShow from "../assets/img/show_pass.png";
+import passHide from "../assets/img/hide-pass.png";
+import leftImage from "../assets/img/loginpageimage.png";
 import { useNavigate } from "react-router-dom";
-import GoogleIcon from "../img/googleIcon.png";
-import FacbookIcon from "../img/facbookIcon.png";
+import GoogleIcon from "../assets/img/googleIcon.png";
+import FacbookIcon from "../assets/img/facbookIcon.png";
 import NavBar from "../Components/NavBar";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);

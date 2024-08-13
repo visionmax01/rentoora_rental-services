@@ -5,6 +5,7 @@
 
 body{
   background-color: var(--bodyColor);
+  box-sizing: border-box;
 }
 .glow-shadow {
   position: relative;

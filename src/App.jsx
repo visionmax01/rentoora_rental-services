@@ -8,6 +8,7 @@ import ForgetPassword from "./AuthPages/ForgetPassword";
 import OtpPage from "./AuthPages/OtpPage";
 import ChangePassword from "./AuthPages/ChangePassword";
 import Developer from "./Components/homePage/develober";
+import ClientDashHome from "./ClientSide/clientDashHome";
 
 
 
@@ -25,6 +26,13 @@ function App() {
         <Route path="/otp" element={<OtpPage />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/developer" element={<Developer />} />
+
+
+
+
+
+        {/* client side  saperated routes */}
+        <Route path="/client-dashboard" element={<ClientDashHome/>}  />
 
       </Routes>
     </Router>

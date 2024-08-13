@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import MyPic from '../../img/my_profile_pic.jpg'
-import MyPic2 from '../../img/shiv.jpg'
+import MyPic from '../../assets/img/my_profile_pic.jpg'
+import MyPic2 from '../../assets/img/shiv.jpg'
 
-const CardScroller = () => {
+const Testimonials = () => {
   const scrollRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
@@ -83,4 +83,4 @@ const CardScroller = () => {
   );
 };
 
-export default CardScroller;
+export default Testimonials;

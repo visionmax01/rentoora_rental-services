@@ -4,7 +4,7 @@ import VerifyOTP from "../Components/RegisterForm/VerifyOTP";
 import UploadProfilePicture from "../Components/RegisterForm/UploadProfilePicture";
 import ReviewData from "../Components/RegisterForm/ReviewData";
 import SuccessMessage from "../Components/RegisterForm/SuccessMessage";
-import registerImg from "../img/register_humanImg.jpg";
+import registerImg from "../assets/img/register_humanImg.jpg";
 import NavBar from "../Components/NavBar";
 const Register = () => {
   const [currentStep, setCurrentStep] = useState(1);

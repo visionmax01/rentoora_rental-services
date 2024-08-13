@@ -1,8 +1,8 @@
 import React from 'react';
 import { Home, Wrench, Zap, Phone, Mail, Facebook, Twitter, Instagram, CreditCard } from 'lucide-react';
-import Mainlogo from '../img/Main_logo.png';
-import Esewa from '../img/esewa-logo.png';
-import Khalti from '../img/khalti_wallet.png';
+import Mainlogo from '../assets/img/Main_logo.png';
+import Esewa from '../assets/img/esewa-logo.png';
+import Khalti from '../assets/img/khalti_wallet.png';
 
 const Footer = () => {
   return (
