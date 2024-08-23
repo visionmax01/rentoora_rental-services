@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import MyPic from '../../assets/img/my_profile_pic.jpg'
-import MyPic2 from '../../assets/img/shiv.jpg'
+import MyPic2 from '../../assets/img/shiv.png'
 
 const Testimonials = () => {
   const scrollRef = useRef(null);

@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "../NavBar";
 import DeveloperImg1 from '../../assets/img/my_profile_pic.jpg'
-import DeveloperImg2 from '../../assets/img/shiv.jpg'
+import DeveloperImg2 from '../../assets/img/shiv.png'
 const Developer = () => {
   return (
     <div className="  mb-12">

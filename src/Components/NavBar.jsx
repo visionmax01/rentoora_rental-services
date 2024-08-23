@@ -13,7 +13,7 @@ const NavBar = () => {
   };
 
   const handleLoginRecirection = () => {
-    navigate("/login");
+    navigate("/login-user");
   };
   const HomePageRedirection = () => {
     navigate("/");

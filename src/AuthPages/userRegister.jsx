@@ -6,7 +6,7 @@ import ReviewData from "../Components/RegisterForm/ReviewData";
 import SuccessMessage from "../Components/RegisterForm/SuccessMessage";
 import registerImg from "../assets/img/register_humanImg.jpg";
 import NavBar from "../Components/NavBar";
-const Register = () => {
+const UserRegister = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
@@ -166,4 +166,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default UserRegister;

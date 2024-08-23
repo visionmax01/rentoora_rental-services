@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom";
 import GoogleIcon from "../assets/img/googleIcon.png";
 import FacbookIcon from "../assets/img/facbookIcon.png";
 import NavBar from "../Components/NavBar";
-const Login = () => {
+const UserLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleSignup = () => {
-    navigate("/signup");
+    navigate("/register-user");
   };
   // Set the page title
   useEffect(() => {
@@ -24,7 +24,7 @@ const Login = () => {
   };
 
   const handleRegisterRedirect = () => {
-    navigate("/signup");
+    navigate("/register-user");
   };
 
   const togglePasswordVisibility = () => {
@@ -165,4 +165,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default UserLogin;

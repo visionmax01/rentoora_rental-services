@@ -1,19 +1,283 @@
-import React from 'react';
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { PenBoxIcon } from "lucide-react";
+import manpng from "../assets/img/man.png";
+import ProfilePopup from "../Components/ProfilePopup"; // Import the updated ProfilePopup
+import { XIcon } from "lucide-react";
 
 const ClientProfile = () => {
-    return (
-        <div className=" w-full h-[630px] overflow-y-auto px-8 pt-8 ">
-        <div className="w-full h-auto rounded bg-opacity-15">
-        <h1>Client Profile Content</h1>
-        </div>
-     
+  const [user, setUser] = useState(null);
+  const [profilePhoto, setProfilePhoto] = useState(null);
+  const [citizenshipImagePath, setDocumentePhoto] = useState(null);
+  const [editingField, setEditingField] = useState(null);
+  const [details, setDetails] = useState({
+    name: "",
+    email: "",
+    phoneNo: "",
+    accountId: "",
+    address: "",
+    role: '',
+    dateOfBirth: ''
+  });
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("http://localhost:7000/auth/profile", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        setUser(response.data);
+        setDetails({
+          name: response.data.name,
+          email: response.data.email,
+          phoneNo: response.data.phoneNo,
+          accountId: response.data.accountId,
+          address: response.data.address,
+          role: response.data.role,
+          dateOfBirth: formatDate(response.data.dateOfBirth),
+        });
+        fetchProfilePhoto(response.data.profilePhotoPath);
+        fetchDocumentPhoto(response.data.citizenshipImagePath);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  const fetchProfilePhoto = (profilePhotoPath) => {
+    axios
+      .get(`http://localhost:7000/${profilePhotoPath}`, { responseType: "arraybuffer" })
+      .then((response) => {
+        const imageBlob = new Blob([response.data], { type: response.headers["content-type"] });
+        const imageUrl = URL.createObjectURL(imageBlob);
+        setProfilePhoto(imageUrl);
+      })
+      .catch((error) => {
+        console.log("Error fetching profile photo:", error);
+      });
+  };
+
+  const fetchDocumentPhoto = (citizenshipImagePath) => {
+    axios
+      .get(`http://localhost:7000/${citizenshipImagePath}`, { responseType: "arraybuffer" })
+      .then((response) => {
+        const imageBlob = new Blob([response.data], { type: response.headers["content-type"] });
+        const imageUrl = URL.createObjectURL(imageBlob);
+        setDocumentePhoto(imageUrl);
+      })
+      .catch((error) => {
+        console.log("Error fetching document photo:", error);
+      });
+  };
+
+  const handleEdit = (field) => {
+    if (field !== "dateOfBirth") {
+      setEditingField(field);
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      await axios.put("http://localhost:7000/auth/update-user-details", {
+        ...details,
+        dateOfBirth: new Date(details.dateOfBirth).toISOString()
+      }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setEditingField(null);
+      const response = await axios.get("http://localhost:7000/auth/user-data", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setUser(response.data);
+      fetchProfilePhoto(response.data.profilePhotoPath);
+    } catch (error) {
+      console.error("Error saving user data:", error);
+    }
+  };
+
+  const handleCancel = () => {
+    setEditingField(null);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetails({ ...details, [name]: value });
+  };
+
+  const handleProfilePicClick = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handlePopupClose = () => {
+    setIsPopupOpen(false);
+  };
+
+  const handleProfilePicUpload = () => {
+    fetchProfilePhoto(details.profilePhotoPath); // Refresh profile photo
+  };
+
+  const handleImagePreviewClick = () => {
+    setIsImagePreviewOpen(true);
+  };
+
+  const handleImagePreviewClose = () => {
+    setIsImagePreviewOpen(false);
+  };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toISOString().split('T')[0];
+  };
+
+  if (!user) return (
+    <div className="w-full h-screen mx-auto my-auto text-white">
+      Loading...
     </div>
-    );
+  );
+
+  return (
+    <div className="w-full container mx-auto p-4 md:p-8 text-white">
+      <div className="flex flex-col gap-8 md:flex-row overflow-hidden">
+        {/* Profile Picture Section */}
+        <div className="space-y-8 md:w-[250px] ">
+          <div className="relative h-64 flex flex-col items-center">
+            {profilePhoto ? (
+              <img
+                className="profile-img w-full h-full rounded-2xl object-cover bg-brand-dark"
+                src={profilePhoto}
+                alt="Profile"
+              />
+            ) : (
+              <img
+                className="profile-img w-full h-full rounded-2xl object-cover bg-brand-dark"
+                src={manpng}
+                alt="Profile"
+              />
+            )}
+            <label
+              htmlFor="profilePic"
+              className="cursor-pointer text-blue-500 hover:underline"
+            >
+              <PenBoxIcon
+                onClick={handleProfilePicClick}
+                className="cursor-pointer absolute bottom-4 right-4 bg-gray-400 w-8 h-8 p-1 hover:bg-white text-black rounded-lg"
+              />
+            </label>
+          </div>
+          <div className="bg-brand-Colorpurple rounded">
+            <h2 className="py-2 text-center font-sans rounded bg-blue-700">Attached Document *</h2>
+            <div className="relative">
+              <img
+                className="profile-img w-full h-44 object-fit bg-brand-dark blur-sm"
+                src={citizenshipImagePath}
+                alt="Document"
+                onClick={handleImagePreviewClick} // Open preview on click
+              />
+              <button
+                onClick={handleImagePreviewClick}
+                className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white text-lg font-bold"
+              >
+                Preview
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* Personal Details Section */}
+        <div className="md:w-1/2 bg-brand-bgColoe space-y-4">
+          <h1 className="text-2xl font-bold mb-4">Profile Details</h1>
+          <div className="bg-red-100 bg-opacity-25 p-2 rounded mb-4 flex justify-between">
+            <h2 className="font-bold">
+              Client ID &nbsp;&nbsp;:&nbsp;&nbsp;{" "}
+              <span className="text-blue-300">{details.accountId}</span>
+            </h2>
+            <h2 className="font-bold">Account Type &nbsp;&nbsp;:&nbsp;&nbsp;{" "}<span className="text-blue-300">{user.role === 0 ? "Client" : "Admin"}</span></h2>
+          </div>
+          <div className="space-y-8">
+            {Object.keys(details).map((key) => {
+              if (key === "accountId") return null; // Skip accountId field
+              if (key === "role") return null; // Skip role field
+
+              return (
+                <div className="relative" key={key}>
+                  <label className="block text-sm font-medium">
+                    {key.charAt(0).toUpperCase() + key.slice(1)}{" "}
+                    <span className="text-red-600"> *</span>
+                  </label>
+                  <input
+                    type="text"
+                    name={key}
+                    value={key === "dateOfBirth" ? formatDate(details[key]) : details[key]}
+                    onChange={handleChange}
+                    disabled={editingField !== key}
+                    className="py-2 mt-1 block w-full bg-transparent border-b-2 outline-none focus:border-b-blue-500"
+                  />
+                  {editingField !== key && key !== "dateOfBirth" && (
+                    <PenBoxIcon
+                      className="absolute hover:text-white bottom-0 p-1 right-0 transform -translate-y-1/2 text-sm text-blue-500 cursor-pointer"
+                      onClick={() => handleEdit(key)}
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          <div className="mt-6 flex justify-end">
+            {editingField && (
+              <button
+                onClick={handleSave}
+                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+              >
+                Save
+              </button>
+            )}
+            {editingField && (
+              <button
+                onClick={handleCancel}
+                className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 ml-4"
+              >
+                Cancel
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+      {/* ProfilePopup Component */}
+      <ProfilePopup
+        isOpen={isPopupOpen}
+        onClose={handlePopupClose}
+        onUpload={handleProfilePicUpload}
+      />
+      {/* Image Preview Popup (optional) */}
+      {isImagePreviewOpen && (
+        <div className="fixed  inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+          <div className="bg-white p-8  rounded-lg relative">
+            <button
+              onClick={handleImagePreviewClose}
+              className="absolute top-0 right-0 "
+            >
+              <XIcon className=" bg-gray-700 w-6 h-6 p-1 hover:bg-red-600" />
+            </button>
+            <img
+              src={citizenshipImagePath}
+              alt="Document Preview"
+              className="w-[45vw] h-[30vw]"
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
-
-
-
-
 
 export default ClientProfile;
