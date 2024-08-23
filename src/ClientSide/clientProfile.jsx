@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { PenBoxIcon } from "lucide-react";
 import manpng from "../assets/img/man.png";
-import ProfilePopup from "../Components/ProfilePopup"; // Import the updated ProfilePopup
+import ProfilePopup from "../Components/ProfilePopup"; 
 import { XIcon } from "lucide-react";
 
 const ClientProfile = () => {
@@ -147,14 +147,14 @@ const ClientProfile = () => {
   );
 
   return (
-    <div className="w-full container mx-auto p-4 md:p-8 text-white">
-      <div className="flex flex-col gap-8 md:flex-row overflow-hidden">
+    <div className="w-full container mx-auto  md:p-8 text-white">
+      <div className="flex flex-col py-1 pl-12 gap-12 md:flex-row overflow-hidden">
         {/* Profile Picture Section */}
         <div className="space-y-8 md:w-[250px] ">
           <div className="relative h-64 flex flex-col items-center">
             {profilePhoto ? (
               <img
-                className="profile-img w-full h-full rounded-2xl object-cover bg-brand-dark"
+                className="profile-img w-full h-full rounded-2xl object-cover bg-brand-dark border-b-4 border-t-4 border-red-700"
                 src={profilePhoto}
                 alt="Profile"
               />
@@ -175,9 +175,11 @@ const ClientProfile = () => {
               />
             </label>
           </div>
-          <div className="bg-brand-Colorpurple rounded">
+
+
+          <div className="bg-brand-Colorpurple rounded ">
             <h2 className="py-2 text-center font-sans rounded bg-blue-700">Attached Document *</h2>
-            <div className="relative">
+            <div className="relative p-2">
               <img
                 className="profile-img w-full h-44 object-fit bg-brand-dark blur-sm"
                 src={citizenshipImagePath}
