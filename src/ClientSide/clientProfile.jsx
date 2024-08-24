@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { PenBoxIcon } from "lucide-react";
+import { PenBoxIcon, XIcon } from "lucide-react";
 import manpng from "../assets/img/man.png";
-import ProfilePopup from "../Components/ProfilePopup"; 
-import { XIcon } from "lucide-react";
+import ProfilePopup from "../Components/ProfilePopup";
+import toast, { Toaster } from 'react-hot-toast';
 
 const ClientProfile = () => {
   const [user, setUser] = useState(null);
@@ -92,6 +92,7 @@ const ClientProfile = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+      toast.success(`${editingField} updated successfully!`); // Show toast
       setEditingField(null);
       const response = await axios.get("http://localhost:7000/auth/user-data", {
         headers: {
@@ -102,6 +103,7 @@ const ClientProfile = () => {
       fetchProfilePhoto(response.data.profilePhotoPath);
     } catch (error) {
       console.error("Error saving user data:", error);
+      toast.error("Error updating details!"); // Show error toast
     }
   };
 
@@ -147,7 +149,8 @@ const ClientProfile = () => {
   );
 
   return (
-    <div className="w-full container mx-auto  md:p-8 text-white">
+    <div className="w-full container mx-auto md:p-8 text-white">
+      <Toaster /> {/* Add the Toaster component here */}
       <div className="flex flex-col py-1 pl-12 gap-12 md:flex-row overflow-hidden">
         {/* Profile Picture Section */}
         <div className="space-y-8 md:w-[250px] ">
@@ -175,7 +178,6 @@ const ClientProfile = () => {
               />
             </label>
           </div>
-
 
           <div className="bg-brand-Colorpurple rounded ">
             <h2 className="py-2 text-center font-sans rounded bg-blue-700">Attached Document *</h2>
@@ -262,13 +264,13 @@ const ClientProfile = () => {
       />
       {/* Image Preview Popup (optional) */}
       {isImagePreviewOpen && (
-        <div className="fixed  inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-          <div className="bg-white p-8  rounded-lg relative">
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+          <div className="bg-white p-8 rounded-lg relative">
             <button
               onClick={handleImagePreviewClose}
-              className="absolute top-0 right-0 "
+              className="absolute top-0 right-0"
             >
-              <XIcon className=" bg-gray-700 w-6 h-6 p-1 hover:bg-red-600" />
+              <XIcon className="bg-gray-700 w-6 h-6 p-1 hover:bg-red-600" />
             </button>
             <img
               src={citizenshipImagePath}
