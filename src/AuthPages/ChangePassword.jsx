@@ -98,7 +98,7 @@ const ChangePassword = () => {
         {error && <p className="text-red-500 mb-4">{error}</p>}
         {success && (
           <p className="text-green-500 mb-4">
-            <i className="fas fa-check"></i> Password changed successfully!
+            <i className="fas fa-check"></i> Password changed successfully!!
           </p>
         )}
         <button
