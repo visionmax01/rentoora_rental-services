@@ -105,7 +105,7 @@ const Register = () => {
           Client Registration Form
         </h2>
         <span className="text-center text-xs">Already have an Account? Go to </span>
-        <Link to="/login" className="hover:text-opacity-80 text-blue-600">
+        <Link to="/client-login" className="hover:text-opacity-80 text-blue-600">
           <strong>Login</strong>
         </Link>
       </div>
