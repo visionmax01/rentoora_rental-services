@@ -110,11 +110,11 @@ const Register = () => {
         </Link>
       </div>
 
-      <div className="mt-2 sm:mx-auto sm:w-1/2">
+      <div className="mt-2 sm:mx-auto p-4 sm:w-1/2">
         <div className="bg-white py-6 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-5" onSubmit={handleSubmit}>
-          <div className="flex justify-between gap-12  ">
-              <div className="w-[80%] ">
+          <div className="md:flex md:flex-row md:justify-between md:gap-12  flex flex-col gap-4 ">
+              <div className="md:w-[80%] w-[100%] ">
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium text-gray-600"
@@ -134,7 +134,7 @@ const Register = () => {
                 </div>
               </div>
 
-              <div className="w-[80%]">
+              <div className="md:w-[80%] w-[100%]">
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-600"
@@ -155,8 +155,8 @@ const Register = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-between gap-12 ">
-              <div className="w-[80%]">
+            <div className="md:flex md:flex-row md:justify-between md:gap-12  flex flex-col gap-4  ">
+              <div className="md:w-[80%] w-[100%]">
                 <label
                   htmlFor="phoneNo"
                   className="block text-sm font-medium text-gray-600"
@@ -176,7 +176,7 @@ const Register = () => {
                 </div>
               </div>
 
-              <div className="w-[80%]">
+              <div className="md:w-[80%] w-[100%]">
                 <label
                   htmlFor="dateOfBirth"
                   className="block text-sm font-medium text-gray-600"
@@ -197,8 +197,8 @@ const Register = () => {
               </div>
             </div>
 
-            <div className="flex justify-between gap-12 ">
-              <div className="w-[80%]">
+            <div className="md:flex md:flex-row md:justify-between md:gap-12  flex flex-col gap-4 ">
+              <div className="md:w-[80%] w-[100%]">
                 <label
                   htmlFor="address"
                   className="block text-sm font-medium text-gray-600"
@@ -218,7 +218,7 @@ const Register = () => {
                 </div>
               </div>
 
-              <div className="w-[80%]">
+              <div className="md:w-[80%] w-[100%]">
                 <label
                   htmlFor="password"
                   className="block text-sm font-medium text-gray-600"
@@ -239,8 +239,8 @@ const Register = () => {
               </div>
             </div>
 
-            <div className="flex justify-between gap-12">
-              <div className="w-[80%]">
+            <div className="md:flex md:flex-row md:justify-between md:gap-12  flex flex-col gap-4 ">
+              <div className="md:w-[80%] w-[100%]">
                 <label
                   htmlFor="profilePhoto"
                   className="block text-sm font-medium text-gray-600"
@@ -268,7 +268,7 @@ const Register = () => {
                 )}
               </div>
 
-              <div className="w-[80%]">
+              <div className="md:w-[80%] w-[100%]">
                 <label
                   htmlFor="citizenshipImage"
                   className="block text-sm font-medium text-gray-600"
