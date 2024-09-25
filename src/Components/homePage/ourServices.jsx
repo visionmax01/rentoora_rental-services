@@ -12,9 +12,11 @@ const OurServices = () => {
     <section className="bg-gray-50 py-12">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-800">
+          <h1 className="md:text-4xl text-xl  font-bold text-gray-800">
             Our Services at Rentoora
           </h1>
+          <p className="md:w-48 w-28 h-1  md:mt-1 rounded-full bg-red-600 mx-auto"></p>
+
           <p className="text-gray-600 mt-4">
             Explore our range of services designed to make your life easier.
           </p>

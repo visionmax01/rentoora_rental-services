@@ -12,9 +12,10 @@ const About = () => {
      <section className="bg-white py-12 ">
       <div className="container mx-auto px-6">
         <div className="flex flex-col items-center justify-center text-center">
-          <h1 className="md:text-4xl text-xl  font-bold text-gray-800 md:mb-6 mb-2 ">
+          <h1 className="md:text-4xl text-xl  font-bold text-gray-800   ">
             Welcome to Rentoora
           </h1>
+          <p className="md:w-48 w-28 h-1  md:mt-1 rounded-full bg-red-600 mx-auto md:mb-4 mb-3 "></p>
           <p className="md:text-lg text-gray-600 md:text-center text-justify  leading-relaxed md:max-w-5xl  text-sm ">
             At Rentoora, we aim to provide a seamless experience for renting rooms, 
             houses, and apartments, booking trusted electricians, and buying or selling used phones. 

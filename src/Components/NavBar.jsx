@@ -43,7 +43,7 @@ const NavBar = () => {
 
   return (
     <div className="sticky top-0 z-50">
-      <nav className="w-full h-16 md:h-12 bg-gradient-to-r to-brand-navbg from-blue-900 flex items-center relative">
+      <nav className="w-full py-1 bg-gradient-to-r to-brand-navbg from-blue-900 flex items-center relative">
         <div className="flex justify-between items-center w-full px-4 md:px-12">
           <img
             onClick={HomePageRedirection}
@@ -56,7 +56,7 @@ const NavBar = () => {
           <ul className="hidden md:flex gap-7 items-center text-white font-semibold">
             <li
               onClick={handleServicesURL}
-              className={`cursor-pointer px-2 py-0.5 rounded-lg transform relative w-full right-0 transition-width duration-300 ease-in-out ${
+              className={`cursor-pointer px-2 py-0.5 rounded-sm transform relative w-full right-0 transition-width duration-300 ease-in-out ${
                 isActive("/service") ? "bg-gradient-to-l from-green-400 to-gray-600" : "hover:bg-gradient-to-l from-green-400 to-gray-600"
               }`}
             >
@@ -64,7 +64,7 @@ const NavBar = () => {
             </li>
             <li
               onClick={handleAboutURL}
-              className={`cursor-pointer px-2 py-0.5 rounded-lg transform relative w-full right-0 transition-width duration-300 ease-in-out ${
+              className={`cursor-pointer px-2 py-0.5 rounded-sm transform relative w-full right-0 transition-width duration-300 ease-in-out ${
                 isActive("/about") ? "bg-gradient-to-l from-green-400 to-gray-600" : "hover:bg-gradient-to-l from-green-400 to-gray-600"
               }`}
             >
@@ -72,7 +72,7 @@ const NavBar = () => {
             </li>
             <li
               onClick={handleDeveloperURL}
-              className={`cursor-pointer px-2 py-0.5 rounded-lg transform relative w-full right-0 transition-width duration-300 ease-in-out ${
+              className={`cursor-pointer px-2 py-0.5 rounded-sm transform relative w-full right-0 transition-width duration-300 ease-in-out ${
                 isActive("/developer") ? "bg-gradient-to-l from-green-400 to-gray-600" : "hover:bg-gradient-to-l from-green-400 to-gray-600"
               }`}
             >
@@ -80,7 +80,7 @@ const NavBar = () => {
             </li>
             <li
               onClick={toggleDropdown}
-              className="relative bg-white text-black py-1 px-4 rounded-md cursor-pointer transform-width duration-300 hover:ease-in-out"
+              className="relative bg-white text-black py-1 px-4 rounded-sm hover:bg-brand-lightGrow cursor-pointer transform-width duration-300 hover:ease-in-out"
             >
               Login
               {isDropdownOpen && (
@@ -113,7 +113,7 @@ const NavBar = () => {
           {/* Mobile View */}
           <div className="md:hidden" onClick={toggleDrawer}>
             {isDrawerOpen ? (
-              <CloseIcon className="h-6 w-6 text-white cursor-pointer" />
+              <MenuIcon className="h-6 w-6 text-white cursor-pointer" />
             ) : (
               <MenuIcon className="h-6 w-6 text-white cursor-pointer" />
             )}
@@ -152,7 +152,7 @@ const NavBar = () => {
           <li
             onClick={handleServicesURL}
             className={`px-4 py-1 rounded-md hover:bg-gradient-to-l from-green-500 to-slate-50 hover:text-black ${
-              isActive("/service") ? "bg-black" : ""
+              isActive("/service") ? "bg-gradient-to-l from-green-400 to-gray-400" : "Hover:bg-gradient-to-l from-green-400 to-gray-600"
             }`}
           >
             Services
@@ -160,7 +160,7 @@ const NavBar = () => {
           <li
             onClick={handleAboutURL}
             className={`px-4 py-1 rounded-md hover:bg-gradient-to-l from-green-500 to-slate-50 hover:text-black ${
-              isActive("/about") ? "bg-black" : ""
+              isActive("/about") ? "bg-gradient-to-l from-green-400 to-gray-400" : "Hover:bg-gradient-to-l from-green-400 to-gray-600"
             }`}
           >
             About
@@ -168,7 +168,7 @@ const NavBar = () => {
           <li
             onClick={handleDeveloperURL}
             className={`px-4 py-1 rounded-md hover:bg-gradient-to-l from-green-500 to-slate-50 hover:text-black ${
-              isActive("/developer") ? "bg-black" : ""
+              isActive("/developer") ? "bg-gradient-to-l from-green-400 to-gray-400" : "Hover:bg-gradient-to-l from-green-400 to-gray-600"
             }`}
           >
             Developer

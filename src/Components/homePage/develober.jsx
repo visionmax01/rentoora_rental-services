@@ -43,7 +43,7 @@ const Developer = () => {
       <div className="flex flex-col items-center p-8">
         <h1 className="md:text-4xl text-2xl text-black font-bold mb-8">
           Meet Our Developers
-          <p className="md:w-48 w-32 h-1 mt-1 rounded-full bg-red-600 mx-auto"></p>
+          <p className="md:w-48 w-32 h-1 md:mt-1 rounded-full bg-red-600 mx-auto"></p>
         </h1>
         <div className="w-full relative flex justify-center flex-wrap gap-14">
           {developers.map((dev, index) => (

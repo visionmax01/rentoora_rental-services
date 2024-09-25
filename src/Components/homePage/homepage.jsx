@@ -270,11 +270,13 @@ const Homepage = () => {
         </div>
         {/* end of search implementations  */}
       </div>
-      <div className="text-black bg-red-200  h-60 md:h-44"></div>
+      <div className="text-black bg-red-200  h-fit">
+        
+      </div>
       {/* section One Ended here  */}
 
       {/* section Two  Started From  here  */}
-      <div className="text-white relative pb-8  top-4  text-start opacity-85">
+      <div className="text-white relative pb-8  top-4 md:mt-28 mt-72  text-start opacity-85">
         <p className="text-4xl  text-center font-extrabold space-x-4"></p>
         <p className="text-sm  md:text-2xl w-96 md:w-3/4 mx-auto  text-wrap break-words text-center capitalize">
           service to make people life easier and Smart with Technology. you can
