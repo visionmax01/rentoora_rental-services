@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Mainlogo from '../assets/img/Main_logo.png';
@@ -8,6 +8,7 @@ const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation(); // Get the current path
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -25,9 +26,20 @@ const NavBar = () => {
     navigate("/developer");
   };
 
+  const handleAboutURL = () => {
+    navigate("/about");
+  };
+
+  const handleServicesURL = () => {
+    navigate("/service");
+  };
+
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  // Function to check if the current path matches the link path
+  const isActive = (path) => location.pathname === path;
 
   return (
     <div className="sticky top-0 z-50">
@@ -40,14 +52,30 @@ const NavBar = () => {
             alt="Main Logo"
           />
 
+          {/* Desktop View */}
           <ul className="hidden md:flex gap-7 items-center text-white font-semibold">
-            <li className="cursor-pointer hover:bg-gradient-to-l from-green-400 to-gray-600 text-white font-semibold rounded-lg px-2 py-0.5 transform relative w-full right-0 transition-width duration-300 ease-in-out">
+            <li
+              onClick={handleServicesURL}
+              className={`cursor-pointer px-2 py-0.5 rounded-lg transform relative w-full right-0 transition-width duration-300 ease-in-out ${
+                isActive("/service") ? "bg-gradient-to-l from-green-400 to-gray-600" : "hover:bg-gradient-to-l from-green-400 to-gray-600"
+              }`}
+            >
               Services
             </li>
-            <li className="cursor-pointer hover:bg-gradient-to-l from-green-400 to-gray-600 text-white font-semibold rounded-lg px-2 py-0.5 transform relative w-full right-0 transition-width duration-300 ease-in-out">
+            <li
+              onClick={handleAboutURL}
+              className={`cursor-pointer px-2 py-0.5 rounded-lg transform relative w-full right-0 transition-width duration-300 ease-in-out ${
+                isActive("/about") ? "bg-gradient-to-l from-green-400 to-gray-600" : "hover:bg-gradient-to-l from-green-400 to-gray-600"
+              }`}
+            >
               About
             </li>
-            <li onClick={handleDeveloperURL} className="cursor-pointer hover:bg-gradient-to-l from-green-400 to-gray-600 text-white font-semibold rounded-lg px-2 py-0.5 transform relative w-full right-0 transition-width duration-300 ease-in-out">
+            <li
+              onClick={handleDeveloperURL}
+              className={`cursor-pointer px-2 py-0.5 rounded-lg transform relative w-full right-0 transition-width duration-300 ease-in-out ${
+                isActive("/developer") ? "bg-gradient-to-l from-green-400 to-gray-600" : "hover:bg-gradient-to-l from-green-400 to-gray-600"
+              }`}
+            >
               Developer
             </li>
             <li
@@ -63,7 +91,7 @@ const NavBar = () => {
                         handleLoginRecirection();
                         setIsDropdownOpen(false);
                       }}
-                      className="px-4 py-2 cursor-pointer hover:bg-gray-200"
+                      className="px-4 py-2 cursor-pointer hover:bg-gray-200" 
                     >
                       User Login
                     </li>
@@ -82,6 +110,7 @@ const NavBar = () => {
             </li>
           </ul>
 
+          {/* Mobile View */}
           <div className="md:hidden" onClick={toggleDrawer}>
             {isDrawerOpen ? (
               <CloseIcon className="h-6 w-6 text-white cursor-pointer" />
@@ -120,22 +149,37 @@ const NavBar = () => {
           />
         </div>
         <ul className="flex flex-col gap-4 mt-4">
-          <li className="px-4 hover:bg-gradient-to-l from-green-500 py-1 rounded-md to-slate-50 hover:text-black">
+          <li
+            onClick={handleServicesURL}
+            className={`px-4 py-1 rounded-md hover:bg-gradient-to-l from-green-500 to-slate-50 hover:text-black ${
+              isActive("/service") ? "bg-black" : ""
+            }`}
+          >
             Services
           </li>
-          <li className="px-4 hover:bg-gradient-to-l from-green-500 py-1 rounded-md to-slate-50 hover:text-black">
+          <li
+            onClick={handleAboutURL}
+            className={`px-4 py-1 rounded-md hover:bg-gradient-to-l from-green-500 to-slate-50 hover:text-black ${
+              isActive("/about") ? "bg-black" : ""
+            }`}
+          >
             About
           </li>
-          <li onClick={handleDeveloperURL} className="px-4 hover:bg-gradient-to-l from-green-500 py-1 rounded-md to-slate-50 hover:text-black">
+          <li
+            onClick={handleDeveloperURL}
+            className={`px-4 py-1 rounded-md hover:bg-gradient-to-l from-green-500 to-slate-50 hover:text-black ${
+              isActive("/developer") ? "bg-black" : ""
+            }`}
+          >
             Developer
           </li>
           <li
             onClick={toggleDropdown}
-            className="relative hover:text-lg bg-brand-dark hover:bg-gradient-to-l from-green-500 rounded py-1 px-4  cursor-pointer transform translate-right duration-300 ease-in-out"
+            className="relative hover:text-lg bg-brand-dark hover:bg-gradient-to-l from-green-500 rounded py-1 px-4 cursor-pointer transform translate-right duration-300 ease-in-out"
           >
             Login
             {isDropdownOpen && (
-              <div className="absolute right-0 mt-2 py-1   md:w-48 w-42 bg-white text-black shadow-lg md:rounded-md">
+              <div className="absolute right-0 mt-2 py-1 md:w-48 w-42 bg-white text-black shadow-lg md:rounded-md">
                 <ul>
                   <li
                     onClick={() => {

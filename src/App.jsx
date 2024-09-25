@@ -17,6 +17,8 @@ import UserRegister from "./AuthPages/userRegister";
 import ClientProfile from "./ClientSide/clientProfile";
 import AdminDashboard from "./AdminSide/AdminDashboard";
 import UserProfile from "./ClientSide/userProfile";
+import AboutUs from "./Components/homePage/about";
+import OurServices from "./Components/homePage/ourServices.jsx";
 
 
 
@@ -27,6 +29,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/developer" element={<Developer />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/service" element={<OurServices />} />
 
           {/* User side separated routes */}
           <Route path="/login-user" element={<UserLogin />} />
