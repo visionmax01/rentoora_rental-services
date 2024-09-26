@@ -151,31 +151,31 @@ const NavBar = () => {
         <ul className="flex flex-col gap-4 mt-4">
           <li
             onClick={handleServicesURL}
-            className={`px-4 py-1 rounded-md hover:bg-gradient-to-l from-green-500 to-slate-50 hover:text-black ${
-              isActive("/service") ? "bg-gradient-to-l from-green-400 to-gray-400" : "Hover:bg-gradient-to-l from-green-400 to-gray-600"
+            className={`px-4 py-1 rounded-sm hover:bg-gradient-to-r from-blue-500 to-slate-50 hover:text-black ${
+              isActive("/service") ? "bg-gradient-to-r from-blue-500 to-slate-50" : ""
             }`}
           >
             Services
           </li>
           <li
             onClick={handleAboutURL}
-            className={`px-4 py-1 rounded-md hover:bg-gradient-to-l from-green-500 to-slate-50 hover:text-black ${
-              isActive("/about") ? "bg-gradient-to-l from-green-400 to-gray-400" : "Hover:bg-gradient-to-l from-green-400 to-gray-600"
+            className={`px-4 py-1 rounded-sm hover:bg-gradient-to-r from-blue-500 to-slate-50 hover:text-black ${
+              isActive("/about") ? "bg-gradient-to-r from-blue-500 to-slate-50" : ""
             }`}
           >
             About
           </li>
           <li
             onClick={handleDeveloperURL}
-            className={`px-4 py-1 rounded-md hover:bg-gradient-to-l from-green-500 to-slate-50 hover:text-black ${
-              isActive("/developer") ? "bg-gradient-to-l from-green-400 to-gray-400" : "Hover:bg-gradient-to-l from-green-400 to-gray-600"
+            className={`px-4 py-1 rounded-sm hover:bg-gradient-to-r from-blue-500 to-slate-50 hover:text-black ${
+              isActive("/developer") ? "bg-gradient-to-r from-blue-500 to-slate-50" : ""
             }`}
           >
             Developer
           </li>
           <li
             onClick={toggleDropdown}
-            className="relative hover:text-lg bg-brand-dark hover:bg-gradient-to-l from-green-500 rounded py-1 px-4 cursor-pointer transform translate-right duration-300 ease-in-out"
+            className="relative w-fit bg-brand-dark hover:bg-blue-500  rounded-sm py-1 px-4 cursor-pointer transform translate-right duration-300 ease-in-out"
           >
             Login
             {isDropdownOpen && (
