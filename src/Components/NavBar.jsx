@@ -175,7 +175,7 @@ const NavBar = () => {
           </li>
           <li
             onClick={toggleDropdown}
-            className="relative w-fit bg-brand-dark hover:bg-blue-500  rounded-sm py-1 px-4 cursor-pointer transform translate-right duration-300 ease-in-out"
+            className="relative  bg-brand-dark hover:bg-blue-500 bg-opacity-70  rounded-sm py-1 px-4 cursor-pointer transform translate-right duration-300 ease-in-out"
           >
             Login
             {isDropdownOpen && (
