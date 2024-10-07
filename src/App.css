@@ -3,9 +3,11 @@
   --bodyColor:#180f27;
 }
 
+
 body{
-  background-color: var(--bodyColor);
   box-sizing: border-box;
+  background-color: var(--bodyColor);
+
 }
 .glow-shadow {
   position: relative;
@@ -23,3 +25,7 @@ body{
   box-shadow: 0 0 20px 5px rgba(255, 3, 3, 0.5);
   pointer-events: none;
 }
+
+
+
+

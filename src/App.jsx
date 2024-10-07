@@ -50,6 +50,7 @@ function App() {
             <Route path="/client-dashboard" element={<ClientDashHome />} />
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
             <Route path="/client-post" element={<ClientPost />} />
+            <Route path="/change-password" element={<ChangePassword />} />
           </Route>
 
           {/* Catch-all route */}

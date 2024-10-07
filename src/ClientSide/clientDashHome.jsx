@@ -9,19 +9,19 @@ import {
   LogOut,
   KeySquare,
   Upload,
-
 } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import CompanyLogo from "../assets/img/Main_logo.png";
-import manpng from "../assets/img/man.png"
+import manpng from "../assets/img/man.png";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ClientHomePage from "./clientHomePage";
 import ClientProfile from "./clientProfile";
 import AllPost from "./displayClientPost";
 import ClientPost from "./ClintPost";
 import { FaSpinner } from "react-icons/fa";
-
+import ChangePassword from "./ChangePassword";
+import ServicesSupport from './ServicesSuport';
 
 const ClientDashHome = () => {
   const [user, setUser] = useState(null);
@@ -35,27 +35,35 @@ const ClientDashHome = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Load the last active component from localStorage if it exists
+    const savedComponent = localStorage.getItem("activeComponent");
+    if (savedComponent) {
+      setActiveComponent(savedComponent);
+    }
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/client-login");
+    }
+
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:7000/auth/user-data",
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        const response = await axios.get("http://localhost:7000/auth/user-data", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setUser(response.data);
         fetchProfilePhoto(response.data.profilePhotoPath);
         setTimeout(() => setLoading(false), 2000); // 2 second delay
       } catch (error) {
         console.error("Error fetching user data:", error);
+        navigate("/client-login");
       }
     };
 
     fetchUserData();
   }, [navigate]);
-   
 
   const fetchProfilePhoto = (profilePhotoPath) => {
     axios
@@ -63,7 +71,7 @@ const ClientDashHome = () => {
       .then((response) => {
         const imageBlob = new Blob([response.data], { type: response.headers["content-type"] });
         const imageUrl = URL.createObjectURL(imageBlob);
-        setProfilePhoto(imageUrl); // Set the profilePhoto state with the image URL
+        setProfilePhoto(imageUrl);
       })
       .catch((error) => {
         console.log("Error fetching profile photo:", error);
@@ -72,18 +80,13 @@ const ClientDashHome = () => {
 
   const handleLogout = async () => {
     try {
-      // Make the logout API request
       await axios.post('http://localhost:7000/auth/logout', {}, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       });
-  
-      // Clear the token and user data from localStorage
       localStorage.removeItem('token');
       localStorage.removeItem('userRole');
-  
-      // Redirect to the client login page
       navigate('/client-login');
     } catch (error) {
       console.error('Error logging out:', error);
@@ -107,6 +110,12 @@ const ClientDashHome = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Function to handle component change and save it to localStorage
+  const handleComponentChange = (component) => {
+    setActiveComponent(component);
+    localStorage.setItem("activeComponent", component); // Save active component to localStorage
+  };
+
   const renderComponent = () => {
     switch (activeComponent) {
       case "Dashboard":
@@ -115,21 +124,27 @@ const ClientDashHome = () => {
         return <ClientProfile />;
       case "View_posts":
         return <AllPost />;
+      case "Support":
+        return <ServicesSupport />;
       case "Create_post":
         return <ClientPost />;
+      case "change-password":
+        return <ChangePassword />;
       default:
         return <ClientHomePage />;
     }
   };
 
-  if (loading) return <div className="w-full h-screen mx-auto my-auto text-white flex justify-center items-center">
-  <div className=" w-fit mx-auto flex justify-center flex-col">
-<FaSpinner className="animate-spin  w-10 h-10 mx-auto mb-6"/>
-    <p>Redirecting to Your Dashboard . . .</p>
-  </div>
-</div>;
+  if (loading) return (
+    <div className="w-full h-screen mx-auto my-auto text-white flex justify-center items-center">
+      <div className="w-fit mx-auto flex justify-center flex-col">
+        <FaSpinner className="animate-spin w-10 h-10 mx-auto mb-6" />
+        <p>Redirecting to Your Dashboard . . .</p>
+      </div>
+    </div>
+  );
 
-if (!user) return <div className="w-full h-screen mx-auto my-auto text-white">Error loading user data.</div>;
+  if (!user) return <div className="w-full h-screen mx-auto my-auto text-white">Error loading user data.</div>;
 
   return (
     <div className="flex">
@@ -145,21 +160,14 @@ if (!user) return <div className="w-full h-screen mx-auto my-auto text-white">Er
         } transition-all duration-500`}
       >
         <ul className="flex gap-4 flex-col">
-          {/* Navigation Items */}
-          {[
-            "Dashboard",
-            "Profile",
-            "View_posts",
-            "Support",
-            "Create_post",
-          ].map((item) => (
+          {["Dashboard", "Profile", "View_posts", "Support", "Create_post"].map((item) => (
             <li key={item} className="relative group">
               <a
                 href="#"
                 className={`flex hover:bg-brand-bgColor hover:text-white items-center gap-2 w-full px-4 rounded-l-full py-2 ${
                   activeComponent === item ? "bg-brand-bgColor text-white" : ""
                 }`}
-                onClick={() => setActiveComponent(item)}
+                onClick={() => handleComponentChange(item)} // Use handleComponentChange to change component
               >
                 {item === "Dashboard" && <LayoutDashboard />}
                 {item === "Profile" && <User />}
@@ -197,57 +205,55 @@ if (!user) return <div className="w-full h-screen mx-auto my-auto text-white">Er
                 className="bg-white px-2 py-1 rounded-md -ml-3 flex items-center"
                 onClick={toggleProfileMenu}
               >
-               {profilePhoto ? (
-            <img
-              className="profile-img w-8 h-8 rounded object-top object-cover bg-brand-dark"
-              alt="Profile"
-              src={profilePhoto}
-            />
-          ) : (
-            <img
-              className="profile-img w-8 h-8 rounded object-top-center object-cover bg-brand-dark"
-              src={manpng}
-              alt="pic"
-            />
-          )}
-                <ChevronDown className="ml-1 text-red-800" />
+                {profilePhoto ? (
+                  <img
+                    className="profile-img w-8 h-8 rounded object-top object-cover bg-brand-dark"
+                    alt="Profile"
+                    src={profilePhoto}
+                  />
+                ) : (
+                  <img
+                    className="profile-img w-8 h-8 rounded object-top-center object-cover bg-brand-dark"
+                    src={manpng}
+                    alt="pic"
+                  />
+                )}
+                <ChevronDown className="text-black" />
               </button>
               {profileMenuOpen && (
                 <div
                   ref={profileMenuRef}
-                  className="absolute   z-50 top-10 right-0 mt-2 bg-white text-red-800 shadow-lg rounded w-48"
+                  className="absolute z-50 top-10 right-4 bg-white w-[13rem] h-fit rounded-sm shadow-lg text-black"
                 >
-                  <ArrowDropUpIcon className="text-2xl absolute transform -translate-y-[0.9rem] text-white right-6" />
-                  <p className=" text-gray-900 flex justify-start text-[14px] items-center gap-2 px-4 py-2 bg-blue-400 rounded">
-
-                  <span className="text-sm">ClientID:</span>{user.accountId}
-                  </p>
-                  <div>
-                  <Link
-                    onClick={() => setActiveComponent("Profile")}
-                    className="flex justify-start text-sm items-center gap-2 px-4 py-2 hover:bg-gray-200 rounded"
-                  >
-                    <User /> Profile
-                  </Link>
-                  <a
-                    href="#"
-                    className="flex justify-start text-sm items-center gap-2 px-4 py-2 hover:bg-gray-200 rounded"
-                  >
-                    <KeySquare /> Change Password
-                  </a>
-                  <button
-                    onClick={handleLogout}
-                    className="flex justify-start text-sm items-center gap-2 px-4 py-2 hover:bg-gray-200 rounded w-full"
-                  >
-                    <LogOut /> Logout
-                  </button>
-                  </div>
+                  <ul className="flex flex-col gap-2">
+                  <li
+                      onClick={() => handleComponentChange("Profile")}
+                      className="hover:bg-gray-300 rounded py-2 pl-4 cursor-pointer"
+                    >
+                      Profile
+                    </li>
+                    <li
+                      onClick={() => handleComponentChange("change-password")}
+                      className="hover:bg-gray-300 rounded py-2 pl-4 cursor-pointer"
+                    >
+                      Change Password
+                    </li>
+                    <li
+                      onClick={handleLogout}
+                      className="hover:bg-gray-300 rounded py-2 pl-4 cursor-pointer"
+                    >
+                      Logout &nbsp;
+                      <LogOut className="inline-block mr-2" />
+                      
+                    </li>
+                  </ul>
+                  <ArrowDropUpIcon className="text-white absolute -top-3 right-2" />
                 </div>
               )}
             </div>
           </div>
         </div>
-        <div>{renderComponent()}</div>
+        <main className="overflow-hidden">{renderComponent()}</main>
       </aside>
     </div>
   );

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Mainlogo from '../assets/img/Main_logo.png';
 import { FaSpinner } from 'react-icons/fa';
+import { setupAxiosInterceptor } from '../Components/axiosConfig'; 
+import { toast } from 'react-hot-toast'; // Import react-hot-toast
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -10,6 +12,20 @@ const Login = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const message = location.state?.message || '';
+
+  // Set up axios interceptor on component mount
+  useEffect(() => {
+    setupAxiosInterceptor(navigate);
+  }, [navigate]);
+
+  // Trigger a toast for session expired message
+  useEffect(() => {
+    if (message) {
+      toast.error(message); // Display the message in a toast
+    }
+  }, [message]);
 
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -17,7 +33,7 @@ const Login = () => {
       if (token) {
         try {
           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-          const response = await axios.get('http://localhost:7000/client/profile', { withCredentials: true });
+          const response = await axios.get('https://flourishing-clafoutis-3f1ce0.netlify.app/.netlify/functions/server/client/profile', { withCredentials: true });
           if (response.data) {
             const role = response.data.role;
             navigate(role === 1 ? '/admin-dashboard' : '/client-dashboard');
@@ -35,7 +51,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:7000/auth/login', { email, password });
+      const response = await axios.post('https://flourishing-clafoutis-3f1ce0.netlify.app/.netlify/functions/server/auth/login', { email, password });
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
         axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
@@ -49,7 +65,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center  sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-100 flex flex-col justify-center sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <img src={Mainlogo} className="h-12 m-auto" alt="" />
         <h2 className="text-center text-3xl font-extrabold text-gray-900">
@@ -57,7 +73,7 @@ const Login = () => {
         </h2>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md p-4">
+      <div className="pb-12 mt-4 sm:mx-auto sm:w-full sm:max-w-md p-4">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
@@ -110,7 +126,7 @@ const Login = () => {
                     <span>Signing in...</span>
                   </>
                 ) : (
-                  "Sign in"
+                  'Sign in'
                 )}
               </button>
             </div>
@@ -122,9 +138,7 @@ const Login = () => {
                 <div className="w-full border-t border-gray-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
-                  Or
-                </span>
+                <span className="px-2 bg-white text-gray-500">Or</span>
               </div>
             </div>
 

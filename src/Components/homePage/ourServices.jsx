@@ -7,9 +7,9 @@ import Footer from '../Footer';
 
 const OurServices = () => {
   return (
-    <>
+    <div className="ourServices bg-gray-50" >
     <NavBar/>
-    <section className="bg-gray-50 py-12">
+    <section className=" py-12 ">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h1 className="md:text-4xl text-xl  font-bold text-gray-800">
@@ -117,7 +117,7 @@ const OurServices = () => {
       </div>
     </section>
     <Footer/>
-    </>
+    </div>
   );
 };
 

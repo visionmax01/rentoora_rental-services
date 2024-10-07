@@ -43,7 +43,7 @@ const NavBar = () => {
 
   return (
     <div className="sticky top-0 z-50">
-      <nav className="w-full py-1 bg-gradient-to-r to-brand-navbg from-blue-900 flex items-center relative">
+      <nav className="w-full  bg-gradient-to-r to-brand-navbg from-blue-900 border-b-4 border-blue3-600 flex items-center relative">
         <div className="flex justify-between items-center w-full px-4 md:px-12">
           <img
             onClick={HomePageRedirection}

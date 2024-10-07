@@ -201,7 +201,7 @@ const Homepage = () => {
 
   
   return (
-    <div className="relative text-white">
+    <div className="relative text-white bg-brand-bgColor">
       <NavBar />
 
       {/* section One of HOME page start  */}

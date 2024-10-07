@@ -42,37 +42,41 @@ const ProfilePopup = ({ isOpen, onClose, onUpload }) => {
   );
 
   const handleUpload = async () => {
-    if (croppedImage) {
-      setLoading(true);
-      try {
-        const formData = new FormData();
-
-        // Convert croppedImage (data URL) to a Blob
-        const blob = await fetch(croppedImage).then((res) => res.blob());
-        formData.append("profilePic", blob, "profile-pic.jpg");
-
-        await axios.post(
-          "http://localhost:7000/auth/update-profile-pic",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-
-        toast.success("Profile picture updated successfully");
-        onUpload(); // Notify parent to refresh profile photo
-        onClose(); // Close the popup
-      } catch (error) {
-        toast.error("Error updating profile picture");
-        console.error("Error updating profile picture:", error);
-      } finally {
-        setLoading(false); // Reset loading state
-      }
+    if (!croppedImage) {
+      toast.error("Please choose an image for your profile picture");
+      return; // Exit the function if no image is selected
+    }
+  
+    setLoading(true);
+    try {
+      const formData = new FormData();
+  
+      // Convert croppedImage (data URL) to a Blob
+      const blob = await fetch(croppedImage).then((res) => res.blob());
+      formData.append("profilePic", blob, "profile-pic.jpg");
+  
+      await axios.post(
+        "http://localhost:7000/auth/update-profile-pic",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+  
+      toast.success("Profile picture updated successfully");
+      onUpload(); // Notify parent to refresh profile photo
+      onClose(); // Close the popup
+    } catch (error) {
+      toast.error("Error updating profile picture");
+      console.error("Error updating profile picture:", error);
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
+  
 
   const handleRotateLeft = () => setRotation(rotation - 90);
   const handleRotateRight = () => setRotation(rotation + 90);
@@ -83,7 +87,7 @@ const ProfilePopup = ({ isOpen, onClose, onUpload }) => {
         <button onClick={onClose} className="absolute top-2 right-2 text-black">
           <XIcon className="w-6 h-6 hover:text-red-600" />
         </button>
-        <h2 className="text-xl font-bold mb-4">Update Profile Picture</h2>
+        <h2 className="text-xl font-bold mb-4 text-black">Update Profile Picture</h2>
         <div className="relative mb-4">
           <input
             type="file"
